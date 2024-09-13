@@ -20,10 +20,12 @@ def merge(x: list[int], y: list[int]) -> list[int]:
         else:
             z.append(y[j])
             j += 1
-        if len(x) == 0:
-            z.append(y)
-        elif len(y) == 0: 
-            z.append(x)
-              
-        break  # FIXME: you shouldn't just break here
-    return z
+            
+        if i == len(x):
+            z.extend(y[j:])
+            return z
+        elif j == len(y): 
+            z.extend(x[i:])
+            return z
+
+print(merge([1, 2, 4, 6], [1, 3, 4, 5]))
