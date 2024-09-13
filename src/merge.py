@@ -27,5 +27,9 @@ def merge(x: list[int], y: list[int]) -> list[int]:
         elif j == len(y): 
             z.extend(x[i:])
             return z
+    if i == 0:
+        return x
+    elif j == 0:
+        return y
 
-print(merge([1, 2, 4, 6], [1, 3, 4, 5]))
+print(merge([1, 2, 4, 6], []))
