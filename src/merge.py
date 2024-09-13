@@ -31,5 +31,3 @@ def merge(x: list[int], y: list[int]) -> list[int]:
         return x
     elif j == 0:
         return y
-
-print(merge([1, 2, 4, 6], []))

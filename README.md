@@ -28,7 +28,6 @@ The `list[int]` bits are *type annotations*. You can ignore them; Python does. I
 
 The annotation here just says that `merge` should take two lists of integers (`list[int]`) and it will return a list of integers in return `-> list[int]`. Your editor might give you a warning if you try to use `merge` on other types of objects, but Python itself won't (but might crash if you use an object in a way you shouldn't).
 
-
 To use a function to merge two lists, you use syntax you have already seen
 
 ```python
@@ -37,7 +36,6 @@ z = merge(x, y)
 
 We will use functions in exercises from now on, even though we don't fully understand them yet, because they give us a convinient way to document and test our code. We will generally use two different ways of testing our code: [doctest](https://docs.python.org/3/library/doctest.html) and [pytest](https://docs.pytest.org/en/7.1.x/). You don't have to worry about how this works yet, because I have already set up the tests for your exercises. If you want to know if your code runs to specification, you can use the command
 
-
 ```sh
 > python3 -m doctest src/*.py && python3 -m pytest src
 ```
@@ -45,7 +43,6 @@ We will use functions in exercises from now on, even though we don't fully under
 in your terminal and it will let you know if there are any errors. (If you run it now, before you have done the exercise, you should get an error. There is nothing wrong with having tests that fail, [some consider it a good approach to programming,](https://en.wikipedia.org/wiki/Test-driven_development), that will just guide you to what needs to be done, and when the tests pass, you know that you are done--for now at least).
 
 In all your projects, I will use this command (and a few others) to check if you have solved the problem at hand. When you commit a solution to GitHub it is automatically run, and you can see the result in the `Actions` tab. So, now you know how those tests are run. Running the tests on the command line are easier than committing, pushing, and checking at GitHub, of course.
-
 
 To implement a function, you write code after the documentation string. You need to indent your code to the same level as the string (the same way that you have to indent code in `if`-blocks or `for`-loops), but otherwise there is nothing special about code in a function and code outside.
 
@@ -77,3 +74,8 @@ def merge(x: list[int], y: list[int]) -> list[int]:
 
 You need to fill out the `while` loop and the bit after it. If you have done so correctly, the test command I showed you above should tell you that everything is fine.
 
+# Exercises
+
+- Assume you have two sorted lists, `x` and `y`, and you want to combine them into a new sequence, `z`, that contains all the elements from `x` and all the elements from `y`, in sorted order. You can create `z` by *merging* `x` and `y` as follows: have an index, `i`, into `x` and another index, `j`, into `y`—both initially zero—and compare `x[i]` with `y[j]`. If `x[i] < y[j]`, then append `x[i]` to `z` and increment `i` by one. Otherwise, append `y[j]` to `z` and increment `j`. If either `i` reaches the length of `x` or `j` reaches the end of `y`, simply copy the remainder of the other list to `z`.
+
+The list is correct because of the two input list are already correctly sorted which means that `list[i-1] < list[i]`. So if you always take the smallest number from each list and go through all of the two list and popping the value to the new list, it will create a correctly sorted list as you essentially always look at the first element of each list seperately and pop the value to the new sorted list. The program terminates when both of the input list are empty lists.
